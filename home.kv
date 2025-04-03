@@ -1,0 +1,319 @@
+MDScreen:
+    name: "home"
+    ScrollView:
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: self.minimum_height
+            padding: "10dp"
+            spacing: "10dp"
+
+            MDLabel:
+                text: "Delivery in"
+                font_size: "15sp"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDLabel:
+                text: "24 Hours"
+                bold: True
+                font_size: "28sp"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDLabel:
+                text: "Koba, Gujarat, 382426, India"
+                font_size: "15sp"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            # Adjusted MDTextField and MDIconButton
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: "40dp"
+                spacing: "10dp"  # Space between the text field and the button
+
+                MDTextField:
+                    id: search_field
+                    hint_text: "Search 'Cow Milk'"
+                    size_hint_x: 0.8  # Occupies 80% of the width
+                    height: "40dp"
+                    pos_hint: {"center_y": .5}
+
+                MDIconButton:
+                    icon: "magnify"
+                    size_hint_x: 0.2  # Occupies 20% of the width
+                    pos_hint: {'center_y': 0.5}  # Vertically center the icon button
+                    on_press:
+                        app.show_data(search_field.text)
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "cart_layout"
+
+
+            # New Code Block
+            # IMAGES WITH NAVIGATION BUTTONS
+            # Adjusted MDBoxLayout for image navigation
+            # Adjusted MDBoxLayout for image navigation
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(220)  # Fixed height for the box
+                pos_hint: {'center_x': 0.45, 'center_y': 0.4}  # Center horizontally, adjust vertically as needed
+                width: dp(320)  # Set a fixed width that fits within most screens
+
+                # Chevron left button
+                MDIconButton:
+                    icon: 'chevron-left'
+                    size_hint_x: None
+                    width: dp(48)  # Set a fixed width for the button
+                    pos_hint: {'center_y': 0.5}
+                    on_release: app.change_image(-1)
+
+                # Image screen manager
+                ScreenManager:
+                    id: image_manager
+                    size_hint_x: None
+                    width: dp(224)  # Adjust the size for images
+                    height: dp(220)  # Match the height of the container
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                    # Image 1
+                    Screen:
+                        name: 'image1'
+                        FitImage:
+                            source: "carrots.jpg"
+                            size_hint: None, None
+                            size: dp(224), dp(220)  # Ensure the image fits well
+                            allow_stretch: True
+                            keep_ratio: False
+                            radius: [15, 15, 15, 15]
+
+                    # Image 2
+                    Screen:
+                        name: 'image2'
+                        FitImage:
+                            source: "crops.jpg"
+                            size_hint: None, None
+                            size: dp(224), dp(220)
+                            allow_stretch: True
+                            keep_ratio: False
+                            radius: [15, 15, 15, 15]
+
+                    # Image 3
+                    Screen:
+                        name: 'image3'
+                        FitImage:
+                            source: "veggies.jpg"
+                            size_hint: None, None
+                            size: dp(224), dp(220)
+                            allow_stretch: True
+                            keep_ratio: False
+                            radius: [15, 15, 15, 15]
+
+                # Chevron right button
+                MDIconButton:
+                    icon: 'chevron-right'
+                    size_hint_x: None
+                    width: dp(48)  # Set a fixed width for the button
+                    pos_hint: {'center_y': 0.5}
+                    on_release: app.change_image(1)
+
+
+
+            MDLabel:
+                text: "Categories"
+                font_size: "15sp"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDGridLayout:
+                cols: 2
+                adaptive_height: True
+                padding: "10dp"
+                spacing: "10dp"
+
+                ClickableMDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "140dp", "100dp"
+                    padding: "8dp"
+                    md_bg_color: rgba(255, 253, 208, 1)
+                    on_press:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "category"
+                    Image:
+                        source: "assets/apple.png"
+                    MDLabel:
+                        text: "Dairy Products"
+                        font_size: "15sp"
+                        
+
+                ClickableMDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "140dp", "100dp"
+                    padding: "8dp"
+                    md_bg_color: rgba(208, 255, 253, 1)
+                    on_press:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "category"
+                    Image:
+                        source: "assets/apple.png"
+                    MDLabel:
+                        text: "Vegetables"
+                        font_size: "15sp"
+
+                ClickableMDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "140dp", "100dp"
+                    padding: "8dp"
+                    md_bg_color: rgba(253, 208, 255, 1)
+                    on_press:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "category"
+                    Image:
+                        source: "assets/apple.png"
+                    MDLabel:
+                        text: "Fruits"
+                        font_size: "15sp"
+
+                ClickableMDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "140dp", "100dp"
+                    padding: "8dp"
+                    md_bg_color: rgba(255, 208, 208, 1)
+                    on_press:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "category"
+                    Image:
+                        source: "assets/apple.png"
+                    MDLabel:
+                        text: "Groceries"
+                        font_size: "15sp"
+
+            MDLabel:
+                text: "Offers for you"
+                font_size: "15sp"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDGridLayout:
+                cols: 2
+                adaptive_height: True
+                padding: "10dp"
+                spacing: "10dp"
+
+                ClickableMDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "140dp", "100dp"
+                    padding: "8dp"
+                    md_bg_color: rgba(255, 243, 208, 1)
+                    on_press:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "category"
+                    Image:
+                        source: "assets/apple.png"
+                    MDLabel:
+                        text: "Get 10% OFF above ₹199"
+                        font_size: "10sp"
+                    Button:
+                        text: "Ice creams & Frozen Dessert"
+                        size_hint: None, None
+                        size: "130dp", "20dp"
+                        font_size: "10sp"
+                        padding: "2dp"
+
+                ClickableMDCard:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "140dp", "100dp"
+                    padding: "8dp"
+                    md_bg_color: rgba(255, 255, 243, 1)
+                    on_press:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "category"
+                    Image:
+                        source: "assets/apple.png"
+                    MDLabel:
+                        text: "Get 10% off above ₹99"
+                        font_size: "10sp"
+                    Button:
+                        text: "Fruits & Vegetables"
+                        size_hint: None, None
+                        size: "90dp", "20dp"
+                        font_size: "10sp"
+                        padding: "2dp"
+
+    MDFloatLayout:
+        #navvvvvvv
+        MDBoxLayout:
+            size_hint_y: None
+            height: dp(58)
+            padding: [0, 0, 0, 20]
+            spacing: 5
+            md_bg_color: .9, .9, .9, 1  # Light gray background color
+
+            # Home Button
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    icon: 'home'
+                    theme_text_color: 'Custom'
+                    text_color: app.theme_cls.primary_color
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.manager.current = "home"
+                MDLabel:
+                    text: 'Home'
+                    valign: "center"
+                    theme_text_color: 'Custom'
+                    text_color: app.theme_cls.primary_color
+                    halign: "center"
+
+            # Notification Button
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    icon: 'apps'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "category"
+                MDLabel:
+                    text: 'Category'
+                    valign: "center"
+                    halign: "center"
+
+            # Favorite Button
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    icon: 'cart'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "cart"
+                MDLabel:
+                    text: 'Cart'
+                    valign: "center"
+                    halign: "center"
+
+            # Profile Button
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    icon: 'account'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "account"
+                MDLabel:
+                    text: 'Profile'
+                    valign: "center"
+                    halign: "center"

@@ -1,0 +1,86 @@
+# 56, 40, 81
+MDScreen:
+    name:"accountf"
+    md_bg_color:1,1,1,1
+    MDBoxLayout:
+        orientation:'vertical'
+        MDIconButton:
+            icon : "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "20sp"
+            theme_text_color: "Custom"
+            text_color:rgba(26,24,58,255)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "homef"
+        
+        MDBoxLayout:
+            size_hint_y:.15
+            padding:dp(25)
+            MDBoxLayout:
+                orientation:"vertical"
+                MDLabel:
+                    id:welcome_label_farmer
+                    font_style:"H5"
+                MDBoxLayout:
+                    adaptive_size:True
+                    spacing:dp(10)
+                    MDTextButton:
+                        text: "Edit"
+                        text_size:None,None
+                        adaptive_width:True
+                        on_release:
+                            root.manager.transition.direction = "right"
+                            root.manager.current = "loginf"
+                    MDIcon:
+                        icon:'chevron-down'
+                        
+
+
+            MDIconButton:
+                icon:"assets/notification.png"
+        MDGridLayout:
+            size_hint_y:.75
+            cols:2
+            padding:[dp(15),dp(15),dp(15),dp(35)]
+            spacing:dp(15)
+            ElementCard:
+                image:"assets/todo.png"
+                text:"Orders"
+                subtext:"Return, Refund"
+                
+
+            ElementCard:
+                image:"assets/food.png"
+                text:"Inventory"
+                subtext:"Dairy, Vegetables"
+                
+
+            ElementCard:
+                image:"assets/history.png"
+                text:"History"
+                subtext:"Orders Delivered"
+                
+
+            ElementCard:
+                image:"assets/support.png"
+                text:"Support"
+                
+                subtext:"App Support"
+
+            ElementCard:
+                image:"assets/setting.png"
+                text:"Settings"
+                subtext:"Customize"
+                
+
+            ElementCard:
+                image:"assets/logout.png"
+                text:"Log Out"
+                subtext:""
+                
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "loginf"
+
+

@@ -1,0 +1,138 @@
+MDScreen:
+    name: "product_details"
+    md_bg_color: 1, 1, 1, 1
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        # Top section with back button and title
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(100)
+
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": .95}
+                user_font_size: "20sp"
+                theme_text_color: "Custom"
+                text_color: rgba(26, 24, 58, 255)
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "home"
+
+            MDBoxLayout:
+                padding: dp(25)
+                MDLabel:
+                    text: "PRODUCT NAME"
+                    font_style: "H5"
+
+        # Scrollable content
+        ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: dp(15)
+                spacing: dp(15)
+
+                MDGridLayout:
+                    cols: 2
+                    size_hint_y: None
+                    height: dp(150)
+                    spacing: dp(10)
+
+                    # Image on the left
+                    Image:
+                        source: "assets/apple.png"
+                        size_hint: None, None
+                        size: dp(150), dp(150)
+                        pos_hint: {"center_y": .5}
+
+                    # Labels on the right
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        pos_hint: {"center_y": .5}
+                        spacing: dp(10)
+                        MDLabel:
+                            text: "Label 1: Product Price"
+                            font_style: "H6"
+                            theme_text_color: "Primary"
+
+                        MDLabel:
+                            text: "Label 2: Product Details"
+                            font_style: "Body1"
+                            theme_text_color: "Secondary"
+
+                        MDLabel:
+                            text: "Label 3: Product Rating"
+                            font_style: "Body1"
+                            theme_text_color: "Secondary"
+
+                # Buttons beneath the Image and Labels
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    spacing: dp(10)
+                    size_hint_y: None
+                    height: dp(150)
+                    pos_hint: {"center_x": .5}
+
+                    MDRectangleFlatButton:
+                        text: "Add to Cart"
+                        pos_hint: {"center_x": .5}
+                        on_release: app.add_to_cart()
+
+                    MDRectangleFlatButton:
+                        text: "Buy Now"
+                        pos_hint: {"center_x": .5}
+                        on_release: app.buy_now()
+
+                    MDRectangleFlatButton:
+                        text: "Negotiate"
+                        pos_hint: {"center_x": .5}
+                        on_release: app.negotiate()
+
+        # Fixed bottom navigation bar
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: 20
+            padding: 15
+            size_hint_y: None
+            height: dp(70)
+
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # White background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            MDFloatingActionButton:
+                icon: "home"
+                md_bg_color: 0, 1, 1, .5
+                elevation: 1
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "home"
+
+            MDFloatingActionButton:
+                icon: "apps"
+                md_bg_color: 0, 1, 1, .5
+                elevation: 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "category"
+
+            MDFloatingActionButton:
+                icon: "account"
+                md_bg_color: 0, 1, 1, .5
+                elevation: 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "account"
+
+            MDFloatingActionButton:
+                icon: "cart"
+                md_bg_color: 0, 1, 1, .5
+                elevation: 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "cart"

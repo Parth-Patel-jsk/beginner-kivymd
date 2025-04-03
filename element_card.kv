@@ -1,0 +1,38 @@
+<ElementCard@MDCard>:
+    md_bg_color: 1, 1, 1, 1
+    padding: dp(5)  # Increased padding within the card
+    spacing: dp(10)
+    radius: dp(15)
+    ripple_behavior: True
+    image: ''
+    text: ""
+    items_count: ""
+    subtext: ''
+
+    orientation: 'vertical'
+    size_hint: None, None
+    size: dp(140), dp(200)  # Ensure this size fits the screen width
+
+    Image:
+        source: root.image
+        size_hint_y: None
+        height: dp(80)
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: dp(100)
+
+        MDLabel:
+            halign: "center"
+            text: root.text
+            font_style: "H6"
+
+        MDLabel:
+            halign: "center"
+            font_style: "Caption"
+            text: root.subtext
+
+        MDLabel:
+            halign: "center"
+            text: root.items_count

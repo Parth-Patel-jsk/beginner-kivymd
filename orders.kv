@@ -1,0 +1,81 @@
+MDScreen:
+    name: "orders"
+       
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: "5dp"
+
+        MDTopAppBar:
+            title: "Orders"
+            elevation: 5
+            left_action_items: [["arrow-left", lambda x: app.change_screen("homef")]]
+            pos_hint: {"center_y": .5}
+            user_font_size: "20sp"
+
+
+        ScrollView:
+            MDBoxLayout:
+                id: expansion_panel
+                orientation: 'vertical'
+                adaptive_height: True
+
+<Content>:
+    orientation: 'vertical'
+    padding: "10dp"
+    spacing: "10dp"
+
+    MDBoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "120dp"
+
+        # Image
+        FitImage:
+            source: "assets/google.png"  
+            size_hint: None, None
+            size: "100dp", "100dp"
+            radius: [10,]
+            pos_hint: {"center_y": .5}
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: "8dp"
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: self.minimum_height
+
+                # TextButton
+                MDTextButton:
+                    text: "See All"
+                    theme_text_color: "Custom"
+                    text_color: rgba(0, 122, 255, 255)  
+                    size_hint: None, None
+                    size: self.texture_size
+                    pos_hint: {"top": 1}
+
+            # Name
+            MDLabel:
+                text: "Product Name"
+                theme_text_color: "Primary"
+                font_style: "H6"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            # Detail 1
+            MDLabel:
+                text: "Detail 1: Some information here"
+                theme_text_color: "Secondary"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            # Detail 2
+            MDLabel:
+                text: "Detail 2: More information here"
+                theme_text_color: "Secondary"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+

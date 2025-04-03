@@ -1,0 +1,122 @@
+MDScreen:
+    name: "category"
+    md_bg_color: 1, 1, 1, 1
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        # Top section with back button and title
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(100)
+
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": .95}
+                user_font_size: "20sp"
+                theme_text_color: "Custom"
+                text_color: rgba(26, 24, 58, 255)
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "home"
+
+            MDBoxLayout:
+                padding: dp(25)
+                MDLabel:
+                    text: "CATEGORIES: "
+                    font_style: "H5"
+
+        # Scrollable content
+        ScrollView:
+            MDGridLayout:
+                cols: 2
+                padding: dp(5)  # Reduced padding around the grid
+                spacing: dp(5)  # Reduced spacing between cards
+                adaptive_height: True
+                size_hint_y: None
+                height: self.minimum_height
+
+                ElementCard:
+                    image: "assets/food.png"
+                    text: "Dairy"
+                    subtext: "Milk...."
+                    elevation: 1
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "search_result"
+
+                ElementCard:
+                    image: "assets/food.png"
+                    text: "Fruits"
+                    subtext: "Apples...."
+                    elevation: 1
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "search_result"
+
+                ElementCard:
+                    image: "assets/food.png"
+                    text: "Vegetables"
+                    subtext: "Broccoli...."
+                    elevation: 1
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "search_result"
+
+                ElementCard:
+                    image: "assets/food.png"
+                    text: "Pantry Items"
+                    subtext: "Lentils...."
+                    elevation: 1
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "search_result"
+
+        # Fixed bottom navigation bar
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: 20
+            padding: 15
+            size_hint_y: None
+            height: dp(70)
+
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # White background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            MDFloatingActionButton:
+                icon: "home"
+                md_bg_color: 0, 1, 1, .5
+                elevation: 1
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "home"
+
+            MDFloatingActionButton:
+                icon: "apps"
+                md_bg_color: 0, 1, 1, .5
+                elevation: 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "category"
+
+            MDFloatingActionButton:
+                icon: "account"
+                md_bg_color: 0, 1, 1, .5
+                elevation: 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "account"
+
+            MDFloatingActionButton:
+                icon: "cart"
+                md_bg_color: 0, 1, 1, .5
+                elevation: 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "cart"
+

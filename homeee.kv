@@ -1,0 +1,191 @@
+MDScreen:
+    name: "home"
+
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    # Top app bar
+                    MDTopAppBar:
+                        title: 'FARMAZON'
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("toggle")]]
+                        elevation: 10
+
+                    # ScrollView taking available space
+                    ScrollView:
+                        # BoxLayout inside ScrollView to contain the scrollable content
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            spacing: 10
+                            padding: 10
+                            # Remove the fixed height to let ScrollView expand
+                            size_hint_y: None
+                            height: self.minimum_height
+
+                            # Search bar with icon button
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                size_hint_y: None
+                                height: dp(50)
+
+                                MDTextField:
+                                    id: search_field
+                                    hint_text: "Search"
+                                    mode: "rectangle"
+                                    size_hint_y: None
+                                    size_hint_x: None
+                                    height: dp(50)  # Fixed height for the search bar
+                                    width: dp(250)
+
+                                MDIconButton:
+                                    icon: "magnify"
+                                    pos_hint: {'center_y': 0.5}  # Vertically center the icon button
+                                    on_press:
+                                        app.show_data(search_field.text)
+                                    on_release:
+                                        root.manager.transition.direction = "left"
+                                        root.manager.current = "search_result"
+
+
+                            # IMAGES
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                spacing: 10
+                                size_hint_y: None
+                                height: dp(140)  # Fixed height for Images
+
+                                MDCard:
+                                    size_hint: None, None
+                                    size: "280dp", "120dp"
+                                    pos_hint: {'center_x': 0.5}
+                                    md_bg_color: 1, 1, 1, 1
+                                    elevation: 1
+                                    MDLabel:
+                                        text: "Images:"
+                                        font_style: 'H4'
+
+                            # BESTSELLERS
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                spacing: 10
+                                size_hint_y: None
+                                height: dp(140)  # Fixed height for Bestsellers
+
+                                MDCard:
+                                    size_hint: None, None
+                                    size: "280dp", "120dp"
+                                    pos_hint: {'center_x': 0.5}
+                                    md_bg_color: 1, 1, 1, 1
+                                    elevation: 1
+                                    MDLabel:
+                                        text: "Bestsellers:"
+                                        font_style: 'H4'
+
+                            # SALES
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                spacing: 10
+                                size_hint_y: None
+                                height: dp(140)  # Fixed height for Sales
+
+                                MDCard:
+                                    size_hint: None, None
+                                    size: "280dp", "120dp"
+                                    pos_hint: {'center_x': 0.5}
+                                    md_bg_color: 1, 1, 1, 1
+                                    elevation: 1
+                                    MDLabel:
+                                        text: "Sale:"
+                                        font_style: 'H4'
+
+                            # COMBOS YOU MIGHT NEED
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                spacing: 10
+                                size_hint_y: None
+                                height: dp(140)  # Fixed height for Combos
+
+                                MDCard:
+                                    size_hint: None, None
+                                    size: "280dp", "120dp"
+                                    pos_hint: {'center_x': 0.5}
+                                    md_bg_color: 1, 1, 1, 1
+                                    elevation: 1
+                                    MDLabel:
+                                        text: "Combos:"
+                                        font_style: 'H4'
+
+                    # Layout for the 4 buttons
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        spacing: 20
+                        padding: 15
+                        size_hint_y: None
+                        height: dp(70)
+
+                        MDFloatingActionButton:
+                            icon: "home"
+                            md_bg_color: 0, 1, 1, .5
+                            elevation: 1
+                            on_release:
+                                root.manager.transition.direction = "right"
+                                root.manager.current = "home"
+
+                        MDFloatingActionButton:
+                            icon: "apps"
+                            md_bg_color: 0, 1, 1, .5
+                            elevation: 1
+                            on_release:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "category"
+
+                        MDFloatingActionButton:
+                            icon: "account"
+                            md_bg_color: 0, 1, 1, .5
+                            elevation: 1
+                            on_release:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "account"
+
+                        MDFloatingActionButton:
+                            icon: "cart"
+                            md_bg_color: 0, 1, 1, .5
+                            elevation: 1
+                            on_release:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "cart"
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            width: root.width * 0.8
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                ScrollView:
+                    BoxLayout:
+                        orientation: 'vertical'
+                        padding: "10dp"
+                        spacing: "10dp"
+
+                        MDNavigationDrawerItem:
+                            text: 'Close'
+                            icon: "arrow-left"
+                            on_press:
+                                nav_drawer.set_state("close")
+
+                        MDNavigationDrawerItem:
+                            text: "Profile"
+                            icon: "account"
+                            on_press:
+                                nav_drawer.set_state("close")
+
+                        MDNavigationDrawerItem:
+                            text: "Logout"
+                            icon: "logout"
+                            on_press:
+                                nav_drawer.set_state("close")
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "login"

@@ -1,0 +1,288 @@
+MDScreen:
+    name: "cart"
+    ScrollView:
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: 10
+            padding: 10
+            size_hint_y: None
+            height: self.minimum_height
+
+            # Search bar with icon button
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(50)
+
+                MDTextField:
+                    id: search_field
+                    hint_text: "Search"
+                    mode: "rectangle"
+                    size_hint_y: None
+                    size_hint_x: None
+                    height: dp(50)  # Fixed height for the search bar
+                    width: dp(250)
+
+                MDIconButton:
+                    icon: "magnify"
+                    pos_hint: {'center_y': 0.5}  # Vertically center the icon button
+                    on_press:
+                        app.show_data(search_field.text)
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.manager.current = "search_result"
+
+            # Label for "YOUR CART" (This is the new label)
+            MDLabel:
+                text: "YOUR CART"
+                font_style: 'Subtitle1'
+                halign: 'center'
+                size_hint_y: None
+                height: dp(30)
+
+            # PRODUCTS
+            MDGridLayout:
+                cols: 2
+                spacing: 30
+                padding: 10
+                size_hint_y: None
+                height: dp(140)  # Fixed height for Images
+
+                MDCard:
+                    size_hint: None, None
+                    size: "130dp", "200dp"
+                    pos_hint: {'center_x': 0.7,'center_y':0.2}
+                    md_bg_color: 1, 1, 1, 1
+                    elevation: 10
+
+                    RelativeLayout:
+                        size_hint: None, None
+                        size: "130dp", "200dp"
+
+                        MDTextButton:
+                            text: "name"
+                            font_style: 'Body1'
+                            halign: 'center'
+                            valign: 'top'
+                            pos_hint: {'center_x': 0.5, 'top': 1}  # Center on x-axis, Top on y-axis
+                            size_hint: None, None
+                            size: dp(110), dp(20)
+                            on_press:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "product_details"
+
+                        Image:
+                            source: 'assets/apple.png'
+                            size_hint: None, None
+                            size: dp(60), dp(60)
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.6}  # Centered between "name" and "price"
+
+                        # Label for price positioned just above the "see more" button
+                        MDLabel:
+                            text: "price"
+                            font_style: 'Body1'
+                            halign: 'center'
+                            valign: 'top'
+                            pos_hint: {'center_x': 0.5, 'y': 0.25}
+                            size_hint: None, None
+                            size: dp(110), dp(20)
+
+                        # Button positioned centrally on the x-axis and at the bottom on the y-axis
+                        MDRectangleFlatButton:
+                            text: "Buy"
+                            halign: 'center'
+                            valign: 'bottom'
+                            size_hint: None, None
+                            size: dp(110), dp(30)
+                            pos_hint: {'center_x': 0.5, 'y': 0.05}  # Center on x-axis, Bottom on y-axis
+
+                MDCard:
+                    size_hint: None, None
+                    size: "130dp", "200dp"
+                    pos_hint: {'center_x': 0.7,'center_y':0.2}
+                    md_bg_color: 1, 1, 1, 1
+                    elevation: 10
+
+                    RelativeLayout:
+                        size_hint: None, None
+                        size: "130dp", "200dp"
+
+                        MDTextButton:
+                            text: "name"
+                            font_style: 'Body1'
+                            halign: 'center'
+                            valign: 'top'
+                            pos_hint: {'center_x': 0.5, 'top': 1}  # Center on x-axis, Top on y-axis
+                            size_hint: None, None
+                            size: dp(110), dp(20)
+                            on_press:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "product_details"
+
+                        Image:
+                            source: 'assets/apple.png'
+                            size_hint: None, None
+                            size: dp(60), dp(60)
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.6}  # Centered between "name" and "price"
+
+                        # Label for price positioned just above the "see more" button
+                        MDLabel:
+                            text: "price"
+                            font_style: 'Body1'
+                            halign: 'center'
+                            valign: 'top'
+                            pos_hint: {'center_x': 0.5, 'y': 0.25}
+                            size_hint: None, None
+                            size: dp(110), dp(20)
+
+                        # Button positioned centrally on the x-axis and at the bottom on the y-axis
+                        MDRectangleFlatButton:
+                            text: "Buy"
+                            halign: 'center'
+                            valign: 'bottom'
+                            size_hint: None, None
+                            size: dp(110), dp(30)
+                            pos_hint: {'center_x': 0.5, 'y': 0.05}  # Center on x-axis, Bottom on y-axis
+
+                MDCard:
+                    size_hint: None, None
+                    size: "130dp", "200dp"
+                    pos_hint: {'center_x': 0.7,'center_y':0.2}
+                    md_bg_color: 1, 1, 1, 1
+                    elevation: 10
+
+                    RelativeLayout:
+                        size_hint: None, None
+                        size: "130dp", "200dp"
+
+                        MDTextButton:
+                            text: "name"
+                            font_style: 'Body1'
+                            halign: 'center'
+                            valign: 'top'
+                            pos_hint: {'center_x': 0.5, 'top': 1}  # Center on x-axis, Top on y-axis
+                            size_hint: None, None
+                            size: dp(110), dp(20)
+                            on_press:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "product_details"
+
+                        Image:
+                            source: 'assets/apple.png'
+                            size_hint: None, None
+                            size: dp(60), dp(60)
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.6}  # Centered between "name" and "price"
+
+                        # Label for price positioned just above the "see more" button
+                        MDLabel:
+                            text: "price"
+                            font_style: 'Body1'
+                            halign: 'center'
+                            valign: 'top'
+                            pos_hint: {'center_x': 0.5, 'y': 0.25}
+                            size_hint: None, None
+                            size: dp(110), dp(20)
+
+                        # Button positioned centrally on the x-axis and at the bottom on the y-axis
+                        MDRectangleFlatButton:
+                            text: "Buy"
+                            halign: 'center'
+                            valign: 'bottom'
+                            size_hint: None, None
+                            size: dp(110), dp(30)
+                            pos_hint: {'center_x': 0.5, 'y': 0.05}  # Center on x-axis, Bottom on y-axis
+
+                MDCard:
+                    size_hint: None, None
+                    size: "130dp", "200dp"
+                    pos_hint: {'center_x': 0.7,'center_y':0.2}
+                    md_bg_color: 1, 1, 1, 1
+                    elevation: 10
+
+                    RelativeLayout:
+                        size_hint: None, None
+                        size: "130dp", "200dp"
+
+                        MDTextButton:
+                            text: "name"
+                            font_style: 'Body1'
+                            halign: 'center'
+                            valign: 'top'
+                            pos_hint: {'center_x': 0.5, 'top': 1}  # Center on x-axis, Top on y-axis
+                            size_hint: None, None
+                            size: dp(110), dp(20)
+                            on_press:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "product_details"
+
+                        Image:
+                            source: 'assets/apple.png'
+                            size_hint: None, None
+                            size: dp(60), dp(60)
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.6}  # Centered between "name" and "price"
+
+                        # Label for price positioned just above the "see more" button
+                        MDLabel:
+                            text: "price"
+                            font_style: 'Body1'
+                            halign: 'center'
+                            valign: 'top'
+                            pos_hint: {'center_x': 0.5, 'y': 0.25}
+                            size_hint: None, None
+                            size: dp(110), dp(20)
+
+                        # Button positioned centrally on the x-axis and at the bottom on the y-axis
+                        MDRectangleFlatButton:
+                            text: "Buy"
+                            halign: 'center'
+                            valign: 'bottom'
+                            size_hint: None, None
+                            size: dp(110), dp(30)
+                            pos_hint: {'center_x': 0.5, 'y': 0.05}  # Center on x-axis, Bottom on y-axis
+
+
+    MDBoxLayout:
+        orientation: 'horizontal'
+        spacing: 20
+        padding: 15
+        size_hint_y: None
+        height: dp(70)
+
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        MDFloatingActionButton:
+            icon: "home"
+            md_bg_color: 0, 1, 1, .5
+            elevation: 1
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "home"
+
+        MDFloatingActionButton:
+            icon: "apps"
+            md_bg_color: 0, 1, 1, .5
+            elevation: 1
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "category"
+
+        MDFloatingActionButton:
+            icon: "account"
+            md_bg_color: 0, 1, 1, .5
+            elevation: 1
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "account"
+
+        MDFloatingActionButton:
+            icon: "cart"
+            md_bg_color: 0, 1, 1, .5
+            elevation: 1
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "cart"

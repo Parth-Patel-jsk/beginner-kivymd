@@ -1,0 +1,110 @@
+MDScreen:
+    name: "homef"
+
+    MDNavigationLayout:
+
+        ScreenManager:
+
+            Screen:
+                name: "homef"
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    spacing: 5
+
+                    # Top app bar with menu icon to open the navigation drawer
+                    MDTopAppBar:
+                        title: "Farmazon"
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                        elevation: 10
+
+                    MDLabel:
+                        text:"Welcome User!"
+                        font_style:'H5'
+                        theme_text_color: "Custom"
+                        text_color: "blue"
+                        pos_hint:{"center_x":.3,"center_y":.2}
+                        halign:"center"
+                    
+                    MDLabel:
+                        text:"Let's get started by adding your first product"
+                        font_style:'H6'
+                        theme_text_color: "Custom"
+                        text_color: "purple"
+                        pos_hint:{"center_x":.5,"center_y":.9}
+                        halign:"left"
+
+                    MDCard:
+                        style: "elevated"
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        halign:"center"
+                        padding: "4dp"
+                        size_hint: None, None
+                        size: "240dp", "100dp"
+                        # Sets custom properties.
+                        theme_shadow_color: "Custom"
+                        shadow_color: "green"
+                        theme_bg_color: "Custom"
+                        md_bg_color: "white"
+                        md_bg_color_disabled: "grey"
+                        theme_shadow_offset: "Custom"
+                        shadow_offset: (1, -2)
+                        theme_shadow_softness: "Custom"
+                        shadow_softness: 1
+                        theme_elevation_level: "Custom"
+                        elevation_level: 2
+
+                        MDRelativeLayout:
+
+                            MDIconButton:
+                                icon: "dots-vertical"
+                                pos_hint: {"top": 1, "right": 1}
+
+                            MDLabel:
+                                text: "Add products"
+                                adaptive_size: True
+                                color: "grey"
+                                pos: "12dp", "75dp"
+                                bold: True
+
+
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        spacing: 20
+                        padding: 15
+
+                        MDFloatingActionButton:
+                            icon: "home"
+                            md_bg_color: 0, 1, 1, .5
+                            on_release:
+                                root.manager.transition.direction = "right"
+                                root.manager.current = "homef"
+
+                        MDFloatingActionButton:
+                            icon: "phone"
+                            md_bg_color:  0, 1, 1, .5
+                            on_release:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "inventory"
+
+                        MDFloatingActionButton:
+                            icon: "account"
+                            md_bg_color:  0, 1, 1, .5
+                            on_release:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "accountf"
+
+                        MDFloatingActionButton:
+                            icon: "book"
+                            md_bg_color: 0, 1, 1, .5
+                            on_release:
+                                root.manager.transition.direction = "left"
+                                root.manager.current = "orders"
+
+
+                       
+                    
+                
+
+
+            

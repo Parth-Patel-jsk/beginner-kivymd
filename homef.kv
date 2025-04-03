@@ -1,0 +1,214 @@
+MDScreen:
+    name: "homef"
+
+    MDFloatLayout:
+        # FARMAZON Title at the Top
+        MDLabel:
+            text: "FARMAZON"
+            font_size: "20sp"
+            pos_hint: {"center_x": .2, "center_y": .95}
+            halign: "center"
+            color: rgba(0, 0, 59, 255)
+
+        MDLabel:
+            text: "Let's get your business started in 3 steps"
+            font_size: "14sp"
+            pos_hint: {"center_x": .43, "center_y": .90}
+            halign: "center"
+            color: rgba(135, 133, 193, 255)
+
+        # Upper Panel with Steps
+        BoxLayout:
+            size_hint_y: None
+            height: "40dp"
+            pos_hint: {"center_x": .5, "center_y": .85}
+            spacing: "10dp"
+
+            # Step 1
+            MDBoxLayout:
+                orientation: 'vertical'
+
+                MDFlatButton:
+                    text: "1"
+                    font_size: "18sp"
+                    halign: "center"
+                    color: rgba(0, 0, 255, 255)
+                    on_release:
+                        root.manager.current = "homef"
+                        root.manager.transition.direction = "left"
+                    
+                MDLabel:
+                    text: "Your Products"
+                    font_size: "14sp"
+                    pos_hint:{"center_y": .8}
+                    halign: "center"
+                    color: rgba(0, 0, 255, 255)
+
+            # Step 2
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDFlatButton:
+                    text: "2"
+                    font_size: "18sp"
+                    halign: "center"
+                    color: rgba(192, 192, 192, 255)
+                    on_release:
+                        root.manager.current = "faddproduct"
+                        root.manager.transition.direction = "left"
+                MDLabel:
+                    text: "Product Details"
+                    font_size: "14sp"
+                    halign: "center"
+                    color: rgba(192, 192, 192, 255)
+
+            # Step 3
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDFlatButton:
+                    text: "3"
+                    font_size: "18sp"
+                    halign: "center"
+                    color: rgba(192, 192, 192, 255)
+                MDLabel:
+                    text: "Get first order"
+                    font_size: "14sp"
+                    halign: "center"
+                    color: rgba(192, 192, 192, 255)
+
+        # Text below the upper panel and above the scrollview
+        
+
+        # Align ScrollView below the upper panel
+        ScrollView:
+            size_hint: (1, 0.64 ) # Adjust height to fit the screen better
+            pos_hint: {"center_x": .5, "center_y": .46}  # Adjust position to be below the upper panel
+
+            MDGridLayout:
+                cols: 2
+                padding: dp(5)  # Reduced padding around the grid
+                spacing: dp(5)  # Reduced spacing between cards
+                adaptive_height: True
+                size_hint_y: None
+                height: self.minimum_height
+
+                ElementCard:
+                    image: "assets/food.png"
+                    text: "Dairy"
+                    subtext: "Milk...."
+                    elevation: 1
+                    
+                    padding: "8dp"
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "search_result"
+
+                ElementCard:
+                    image: "assets/food.png"
+                    text: "Fruits"
+                    subtext: "Apples...."
+                    elevation: 1
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "search_result"
+
+                ElementCard:
+                    image: "assets/food.png"
+                    text: "Vegetables"
+                    subtext: "Broccoli...."
+                    elevation: 1
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "search_result"
+
+                ElementCard:
+                    image: "assets/food.png"
+                    text: "Pantry Items"
+                    subtext: "Lentils...."
+                    elevation: 1
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "search_result"
+
+        Button:
+            text: "Add Product"
+            size_hint: .40, .065
+            pos_hint: {"center_x": .78, "center_y": .15}
+            background_color: 0, 0, 0, 0
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "faddproduct"
+            canvas.before:
+                Color:
+                    rgb: rgba(52, 0, 231, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos 
+                    radius: [5]
+
+        # Bottom Navigation Bar
+        MDBoxLayout:
+            size_hint_y: None
+            height: dp(64)
+            padding: [0, 0, 0, 20]
+            spacing: 5
+            md_bg_color: .9, .9, .9, 1  # Light gray background color
+
+            # Home Button
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    icon: 'home'
+                    theme_text_color: 'Custom'
+                    text_color: app.theme_cls.primary_color
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.manager.current = "homef"
+                MDLabel:
+                    text: 'Home'
+                    valign: "center"
+                    theme_text_color: 'Custom'
+                    text_color: app.theme_cls.primary_color
+                    halign: "center"
+
+            # Inventory Button
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    icon: 'warehouse'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "inventory"
+                MDLabel:
+                    text: 'Inventory'
+                    valign: "center"
+                    halign: "center"
+
+            # Orders Button
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    icon: 'store'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "orders"
+                MDLabel:
+                    text: 'Orders'
+                    valign: "center"
+                    halign: "center"
+
+            # Profile Button
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    icon: 'account'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.manager.current = "accountf"
+                MDLabel:
+                    text: 'Profile'
+                    valign: "center"
+                    halign: "center"
